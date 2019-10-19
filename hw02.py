@@ -18,6 +18,8 @@ print(jy(id))
 id_area=id[0:2]
 id_address=id[0:6]
 id_gender=id[14:17]
+id_check=id[17]
+
 
 
 #省份代码
@@ -1128,6 +1130,18 @@ def birthday(id):
 print('生日: ',birthday(id))
 
 
-
+#校验码检验
+def jycheck(id_check):
+    code=[7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2]
+    ID_CHECK=['1','0','X','9','8','7','6','5','4','3','2']
+    x = 0
+    for i in range(len(code)):   
+      x = x +int(id[i])*code[i]
+    jycode = x % 11
+    if id_check==ID_CHECK[jycode]:
+      return '正确的身份证号码'
+    else:
+      return '错误的身份证号码'
+print(jycheck(id_check))
 
 
